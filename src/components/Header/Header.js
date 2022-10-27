@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./styles";
 
-const Header = () => {
+const Header = (props) => {
   const pokemontypesArray = [
     "Normal",
     "Fire",
@@ -23,10 +23,18 @@ const Header = () => {
     "Fairy",
   ];
 
+  function buscaId(e){
+    props.setIdFilter(e.target.value)
+  }
+
+  function buscaNome(e){
+    props.setNomeFilter(e.target.value)
+  }
+
   return (
     <Container>
-      <input type="number" placeholder="Buscar por id" />
-      <input type="text" placeholder="Buscar por nome" />
+      <input type="number" placeholder="Buscar por id" value={props.idFilter} onChange={buscaId}/>
+      <input type="text" placeholder="Buscar por nome" value={props.nameFilter} onChange={buscaNome}/>
       <select>
         <option value="">Ordenar</option>
         <option value="">Crescente</option>
